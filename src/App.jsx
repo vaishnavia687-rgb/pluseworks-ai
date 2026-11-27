@@ -1,16 +1,23 @@
 
 import { useState } from "react";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate
+} from "react-router-dom";
 
 import SystemBanner from "./components/SystemBanner";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
-import TaskCard from "./components/TaskCard";
-import TaskForm from "./components/TaskForm";
+
+import Tasks from "./pages/Tasks";
+import Analytics from "./pages/Analytics";
+import Settings from "./pages/Settings";
 
 import "./App.css";
 
 function App() {
-
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -31,8 +38,8 @@ function App() {
   ]);
 
   function addTask(newTask) {
-    setTasks([
-      ...tasks,
+    setTasks((previousTasks) => [
+      ...previousTasks,
       {
         ...newTask,
         id: Date.now()
@@ -41,61 +48,53 @@ function App() {
   }
 
   return (
-    <div className="app">
+    <BrowserRouter>
+      <div className="app">
 
-      <SystemBanner />
+        <SystemBanner />
+        <Navbar />
 
-      <Navbar />
+        <div className="dashboard-layout">
 
-      <div className="dashboard-layout">
+          <Sidebar />
 
-        <Sidebar />
+          <main className="main-content">
 
-        <main className="main-content">
+            <Routes>
 
-          <h1>Dashboard</h1>
-          <p>Welcome to your PulseWorks AI workspace.</p>
+              <Route
+                path="/"
+                element={<Navigate to="/tasks" replace />}
+              />
 
-          <div className="dashboard-stats">
+              <Route
+                path="/tasks"
+                element={
+                  <Tasks
+                    tasks={tasks}
+                    onAddTask={addTask}
+                  />
+                }
+              />
 
-            <div className="stat-card">
-              <h3>Total Tasks</h3>
-              <h2>{tasks.length}</h2>
-            </div>
+              <Route
+  path="/analytics"
+  element={<Analytics tasks={tasks} />}
+/>
 
-            <div className="stat-card">
-              <h3>In Progress</h3>
-              <h2>
-                {tasks.filter(t => t.status === "In Progress").length}
-              </h2>
-            </div>
+              <Route
+                path="/settings"
+                element={<Settings />}
+              />
 
-            <div className="stat-card">
-              <h3>Completed</h3>
-              <h2>
-                {tasks.filter(t => t.status === "Completed").length}
-              </h2>
-            </div>
+            </Routes>
 
-          </div>
+          </main>
 
-          <TaskForm onAddTask={addTask} />
-
-          <h2>My Tasks</h2>
-
-          <div className="task-list">
-
-            {tasks.map(task => (
-              <TaskCard key={task.id} task={task} />
-            ))}
-
-          </div>
-
-        </main>
+        </div>
 
       </div>
-
-    </div>
+    </BrowserRouter>
   );
 }
 

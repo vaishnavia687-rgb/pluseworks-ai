@@ -1,11 +1,11 @@
 
 import {
-  LayoutDashboard,
   ListTodo,
-  Users,
-  Folder,
+  BarChart3,
   Settings
 } from "lucide-react";
+
+import { NavLink } from "react-router-dom";
 
 function Sidebar() {
   return (
@@ -13,30 +13,20 @@ function Sidebar() {
 
       <h3>Workspace</h3>
 
-      <a href="#">
-        <LayoutDashboard size={18} />
-        Dashboard
-      </a>
-
-      <a href="#">
+      <NavLink to="/tasks">
         <ListTodo size={18} />
-        My Tasks
-      </a>
+        Tasks
+      </NavLink>
 
-      <a href="#">
-        <Users size={18} />
-        Team
-      </a>
+      <NavLink to="/analytics">
+        <BarChart3 size={18} />
+        Analytics
+      </NavLink>
 
-      <a href="#">
-        <Folder size={18} />
-        Files
-      </a>
-
-      <a href="#">
+      <NavLink to="/settings">
         <Settings size={18} />
         Settings
-      </a>
+      </NavLink>
 
     </aside>
   );

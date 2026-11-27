@@ -306,3 +306,101 @@ body {
   }
 
 }
+
+.analytics-card {
+  background: white;
+  padding: 25px;
+  margin-top: 25px;
+  border-radius: 12px;
+  border: 1px solid #e8e7ef;
+}
+
+.analytics-card h1 {
+  color: #6246d8;
+  font-size: 36px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 12px;
+  background: #e8e7ef;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #6246d8;
+  border-radius: 20px;
+  transition: width 0.4s ease;
+}
+
+.sidebar a.active {
+  background: #eeeaff;
+  color: #6246d8;
+  font-weight: bold;
+}
+
+.external-task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.external-task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: #f7f6fc;
+  border-radius: 8px;
+}
+
+.external-task h3 {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.external-task span {
+  color: #6246d8;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+
+.settings-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #e8e7ef;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 25px;
+}
+
+.settings-card h2 {
+  font-size: 18px;
+}
+
+.settings-card > input {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+}
+
+.settings-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.settings-card button {
+  background: #6246d8;
+  color: white;
+  border: none;
+  padding: 13px;
+  border-radius: 7px;
+  cursor: pointer;
+}
